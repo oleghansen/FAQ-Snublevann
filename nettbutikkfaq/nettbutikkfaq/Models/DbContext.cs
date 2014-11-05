@@ -43,15 +43,14 @@ namespace nettbutikkfaq
         public string Title { get; set; }
         public string Description { get; set; }
         public string Answer { get; set; }
-        public int CategoryId { get; set; }
+        public int categoryid { get; set; }
         public virtual Category Categories {get; set; }
     }
 
     public class Categories
     {
         [Key]
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
         public String Name { get; set; }
-        public virtual Question Questions { get; set; }
     }
 }

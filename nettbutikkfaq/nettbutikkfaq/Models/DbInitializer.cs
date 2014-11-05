@@ -12,10 +12,11 @@ namespace nettbutikkfaq.Models
         {
             var categories = new List<Categories>
             {
-                new Categories {Name="Du",  CategoryId=1},//1
-                new Categories {Name="Jeg", CategoryId=2},//2
+                new Categories {Name="Du", Id=1},//1
+                new Categories {Name="Jeg", Id=2},//2
             };
             categories.ForEach(c => context.Categories.Add(c));
+            context.SaveChanges();
 
             var questions = new List<Questions>
             {
@@ -24,12 +25,12 @@ namespace nettbutikkfaq.Models
                     Id = 1,
                     Title = "Hvem er jeg?",
                     Answer = "Du er Ole",
-                    CategoryId=1},
+                    categoryid=1},
                 new Questions{
                     Id = 2,
                     Title = "Hvem er du?",
                     Answer = "Vet ikke",
-                    CategoryId=2 },
+                    categoryid=2 },
             };
             questions.ForEach(c => context.Questions.Add(c));
             context.SaveChanges();

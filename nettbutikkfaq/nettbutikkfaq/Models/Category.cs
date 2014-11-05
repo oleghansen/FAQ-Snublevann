@@ -8,7 +8,7 @@ namespace nettbutikkfaq.Models
 {
     public class Category
     {
-        public int ID { get; set; }
+        public int id { get; set; }
 
         [Display(Name = "Kategori")]
         public string name { get; set; }

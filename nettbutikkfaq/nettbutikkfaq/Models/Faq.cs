@@ -6,7 +6,7 @@ using System.Web;
 
 namespace nettbutikkfaq.Models
 {
-    public class Question
+    public class Faq
     {
         [Display(Name = "Spørsmåls ID")]
         public int id { get; set; }
@@ -15,10 +15,9 @@ namespace nettbutikkfaq.Models
         public String title { get; set; }
         [Display(Name = "Beskrivelse")]
         [Required(ErrorMessage = "Beskrivelse må oppgis")]
-        public String description { get; set; }
+        public String question { get; set; }
         [Display(Name = "Svar")]
         public String answer { get; set; }
-        public String Category { get; set; }
         public int categoryid { get; set; }
 
     }

@@ -1,11 +1,12 @@
 namespace nettbutikkfaq
 {
     using nettbutikkfaq.Models;
-    using System;
-    using System.ComponentModel.DataAnnotations;
-    using System.Data.Entity;
-    using System.Data.Entity.ModelConfiguration.Conventions;
-    using System.Linq;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
 
     public class DatabaseContext : DbContext
     {
@@ -23,7 +24,7 @@ namespace nettbutikkfaq
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
-        public DbSet<Questions> Questions { get; set; }
+        public DbSet<Faqs> Faqs { get; set; }
         public DbSet<Categories> Categories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -36,15 +37,15 @@ namespace nettbutikkfaq
         }
     }
 
-    public class Questions
+    public class Faqs
     {
         [Key]
         public int Id { get; set; }
         public string Title { get; set; }
-        public string Description { get; set; }
+        public string Question { get; set; }
         public string Answer { get; set; }
-        public int categoryid { get; set; }
-        public virtual Category Categories {get; set; }
+        public int CategoriesId { get; set; }
+        public virtual Categories Category {get; set; }
     }
 
     public class Categories
@@ -52,5 +53,6 @@ namespace nettbutikkfaq
         [Key]
         public int Id { get; set; }
         public String Name { get; set; }
+        public List<Faqs> Faqs {get; set;}
     }
 }

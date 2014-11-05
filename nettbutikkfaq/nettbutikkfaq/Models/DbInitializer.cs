@@ -10,30 +10,32 @@ namespace nettbutikkfaq.Models
     {
         protected override void Seed(DatabaseContext context)
         {
+            var faqs = new List<Faqs>
+            {
+
+                new Faqs{
+                    Id = 1,
+                    Title = "Hvem er jeg?",
+                    Answer = "Du er Ole",
+                    CategoriesId=1},
+                new Faqs{
+                    Id = 2,
+                    Title = "Hvem er du?",
+                    Answer = "Vet ikke",
+                    CategoriesId=2 },
+            };
+            faqs.ForEach(c => context.Faqs.Add(c));
+            
+
             var categories = new List<Categories>
             {
-                new Categories {Name="Du", Id=1},//1
-                new Categories {Name="Jeg", Id=2},//2
+                new Categories {Name="Du"},//1
+                new Categories {Name="Jeg"},//2
             };
             categories.ForEach(c => context.Categories.Add(c));
             context.SaveChanges();
 
-            var questions = new List<Questions>
-            {
 
-                new Questions{
-                    Id = 1,
-                    Title = "Hvem er jeg?",
-                    Answer = "Du er Ole",
-                    categoryid=1},
-                new Questions{
-                    Id = 2,
-                    Title = "Hvem er du?",
-                    Answer = "Vet ikke",
-                    categoryid=2 },
-            };
-            questions.ForEach(c => context.Questions.Add(c));
-            context.SaveChanges();
         }
 
     }

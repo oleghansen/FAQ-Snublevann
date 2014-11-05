@@ -4,6 +4,7 @@ namespace nettbutikkfaq
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
     using System.Linq;
 
     public class DatabaseContext : DbContext
@@ -24,6 +25,15 @@ namespace nettbutikkfaq
 
         public DbSet<Questions> Questions { get; set; }
         public DbSet<Categories> Categories { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        }
     }
 
     public class Questions

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html ng-app="App">
+<head>
+    <link href="../../Content/Custom/MainSheet.css" rel="stylesheet" />
+    <link href="../../Content/Custom/customNav.css" rel="stylesheet" />
+    <script src="../LibJS/angular.min.js"></script>
+    <script src="../LibJS/jquery-2.1.1.min.js"></script>
+    <script src="../LibJS/bootstrap.min.js"></script>
+    <link href="../LibJS/bootstrap.min.css" rel="stylesheet" />
+    <script src="faqController.js"></script>
+
+    <title></title>
+</head>
+<body>
+    
+        <div class="container">
+            <div class="navbar navbar-inner" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="row">
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                Snublevann - F.A.Q.
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="navUl pull-right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="jumbotron" style="padding-top: 2px">
+                <div class="row">
+                    <div ng-controller="faqController">
+                        <div class="page-header text-center"><h2>Frequently asked questions</h2></div>
+                        <div class="row" ng-controller="faqController">
+                            <div class="text-center" ng-show="laster"><h3>Laster FAQ, vennligst vent ...</h3></div>
+                            <table class="table table-bordered table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Tittel</th>
+                                        <th>Spørsmål</th>
+                                        <th>Svar</th>
+                                        <th>Kategori</th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="faq in faqs">
+                                    <tr>
+                                        <td>{{faq.id}}</td>
+                                        <td>{{faq.title}}</td>
+                                        <td>{{faq.question}}</td>
+                                        <td>{{faq.answer}}</td>
+                                        <td>{{fag.category}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

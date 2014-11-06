@@ -18,6 +18,7 @@ namespace nettbutikkfaq.Models
         public String question { get; set; }
         [Display(Name = "Svar")]
         public String answer { get; set; }
+        public string category { get; set; }
         public int categoryid { get; set; }
 
     }

@@ -2,24 +2,84 @@
 
 App.controller("faqController", function ($scope, $http) {
 
-    var url = '/api/Faq/';
-
-
+    var url = '/api/Faq/GetAll';
+    
     function hentAlleFaqs() {
         $http.get(url).
           success(function (alleFaqs) {
+              onLoad();
               $scope.faqs = alleFaqs;
+              $scope.laster = false;
+              
+              $scope.sendKnapp = true;
+              $scope.visFaqKnapp = true;
+              $scope.visInnsendteKnapp = true;
+ 
+          }).
+          error(function (data, status) {
+              console.log(status + data);
+          });
+    };
+    $scope.visSkjema = false;
+    $scope.laster = true;
+    
+    hentAlleFaqs();
+
+
+    var url = '/api/Faq/GetUbesvarte';
+    function hentUbesvarte() {
+        $http.get(url).
+          success(function (ubesvarte) {
+              $scope.ubesvarte = ubesvarte,
+              $scope.laster = false,
+              $scope.visUbesvarte = true
+          }).
+          error(function (data, status) {
+              console.log(status + data);
+          });
+    };
+    $scope.laster = true;
+
+
+
+    $scope.visSkjema = function () {
+        $scope.navn = "";
+        $scope.epost = "";
+        $scope.kategori = "";
+        $scope.sporsmal = "";
+        // for å unngå at noen av feltene gir "falske" feilmeldinger 
+        $scope.skjema.$setPristine();
+        $scope.visSkjema = true;
+        $scope.send = true; // dette er knappen for å registrere i form´en.
+    };
+
+    $scope.visFaqsFunction = function () {
+        hideAll();
+        $scope.visFaqs = true;
+    };
+
+    $scope.visSkjemaFunction = function () {
+        hideAll();
+        $scope.visSkjema = true;
+    };
+    $scope.hentUbesvarte = function () {
+        hideAll();
+        hentUbesvarte();
+    }
+
+
+    /*function hentKategoriKunder(id) {
+        $http.get(url + id).
+          success(function (katFaqs) {
+              $scope.katfaqs = katFaqs;
               $scope.laster = false;
           }).
           error(function (data, status) {
               console.log(status + data);
           });
     };
-    $scope.visFaqs = true;
-    //$scope.regKnapp = true;
-    $scope.laster = true;
-    hentAlleFaqs();
 
+    */
    /* $scope.visRegistrerSkjema = function () {
         $scope.fornavn = "";
         $scope.etternavn = "";
@@ -124,4 +184,15 @@ App.controller("faqController", function ($scope, $http) {
             });
     }; */
 
+    function onLoad() {
+        $scope.visFaqs = true;
+        $scope.visSkjema = false;
+        $scope.visUbesvarte = false;
+    };
+
+    function hideAll(){
+        $scope.visFaqs = false;
+        $scope.visSkjema = false;
+        $scope.visUbesvarte = false;
+    };
 });

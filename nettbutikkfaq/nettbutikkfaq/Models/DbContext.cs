@@ -41,6 +41,8 @@ using System.Linq;
     {
         [Key]
         public int Id { get; set; }
+        public String Name { get; set; }
+        public String Epost { get; set; }
         public string Title { get; set; }
         public string Question { get; set; }
         public string Answer { get; set; }

@@ -10,6 +10,13 @@ namespace nettbutikkfaq.Models
     {
         [Display(Name = "Spørsmåls ID")]
         public int id { get; set; }
+
+        [Display(Name = "Navn")]
+        public String name { get; set; }
+
+        [Display(Name = "E-postaddresse")]
+        public String epost { get; set; }
+
         [Display(Name = "Produktnavn")]
         [Required(ErrorMessage = "Produktnavn må oppgis")]
         public String title { get; set; }

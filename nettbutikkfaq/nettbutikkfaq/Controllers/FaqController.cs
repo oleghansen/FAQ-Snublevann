@@ -18,7 +18,7 @@ namespace nettbutikkfaq
         FaqDB faqDb = new FaqDB();
 
         // GET api/faq
-        public HttpResponseMessage Get()
+        public HttpResponseMessage GetAll()
         {
             List<Faq> alleFaqs = faqDb.hentAlleFaqs();
 
@@ -30,16 +30,34 @@ namespace nettbutikkfaq
                 Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
                 StatusCode = HttpStatusCode.OK
             };
+        }
 
-            /* alternativ til return-koden over - for å forklare dette bedre :
-            
-            var respons = new HttpResponseMessage();
-            respons.Content = new StringContent(JsonString, Encoding.UTF8, "application/json");
-            respons.StatusCode = HttpStatusCode.OK;
-            return respons;
-            
-             */
+        public HttpResponseMessage GetUbesvarte()
+        {
+            List<Faq> ubesvarte = faqDb.hentUbesvarte();
 
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(ubesvarte);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
+        public HttpResponseMessage Get(int id)
+        {
+            List<Faq> katFaqs = faqDb.hentKategoriFaqs(id);
+
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(katFaqs);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
         }
 
         // GET api/Kunde/5

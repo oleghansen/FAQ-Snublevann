@@ -60,7 +60,7 @@ namespace nettbutikkfaq
             };
         }
 
-        public HttpResponseMessage Post(Faq innFaq)
+        public HttpResponseMessage PostFaq(Faq innFaq)
         {
             if (ModelState.IsValid)
             {

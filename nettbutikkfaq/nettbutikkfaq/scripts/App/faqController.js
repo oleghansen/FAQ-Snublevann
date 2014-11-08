@@ -5,8 +5,8 @@ App.controller("faqController", function ($scope, $http) {
     var url1 = '/api/Faq/GetAll';
     var url2 = '/api/Faq/GetUbesvarte';
     var url3 = '/api/Category/GetAll';
-    var url4 = '/api/Category/GetCategoryFaqs/';
-    var url5 = '/api/Faq/Post/';
+    var url4 = '/api/Faq/GetCategoryFaqs/';
+    var url5 = '/api/Faq/PostFaq';
     
     function hentAlleFaqs() {
         $http.get(url1).
@@ -80,16 +80,12 @@ App.controller("faqController", function ($scope, $http) {
         hentUbesvarte();
     }
 
-    $scope.sendFunction = function () {
-        $scope.leggTilFaq();
-    }
-
-    $scope.leggTilFaq = function() {
+    $scope.leggTilFaq = function () {
+        console.log("Inne i leggTiLFaq");
         var nyfaq = {
-        navn: $scope.navn,
+        name: $scope.navn,
         epost: $scope.epost,
-        kategori: $scope.kategori,
-        sporsmal: $scope.sporsmal
+        question: $scope.sporsmal
         };
 
         $http.post(url5, nyfaq).
@@ -115,8 +111,11 @@ App.controller("faqController", function ($scope, $http) {
     };
 
     function hentKategoriFaqs(id) {
-        $http.get(url4 + id).
-          success(function (katFaqs) {
+
+        $http({
+            url: url4,
+            params: {id: id }
+        }).success(function (katFaqs) {
               $scope.katfaqs = katFaqs;
               $scope.visKategoriFaqs = true;
           }).

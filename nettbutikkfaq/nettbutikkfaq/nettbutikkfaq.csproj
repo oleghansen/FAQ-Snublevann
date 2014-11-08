@@ -131,7 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\FaqController.cs" />
+    <Compile Include="CategoryDB.cs" />
     <Compile Include="FaqDB.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\DbContext.cs" />

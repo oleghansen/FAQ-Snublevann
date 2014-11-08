@@ -75,5 +75,27 @@ namespace nettbutikkfaq
             }
             return katFaqs;
         }
+
+        public bool leggTilFaq(Faq innFaq)
+        {
+            var nyFaq = new Faqs()
+            {
+                Id = innFaq.id,
+                Name = innFaq.name,
+                Epost = innFaq.epost,
+                Title = innFaq.title,
+                Question = innFaq.question
+            };
+            try
+            {
+                db.Faqs.Add(nyFaq);
+                db.SaveChanges();
+            }
+            catch (Exception feil)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

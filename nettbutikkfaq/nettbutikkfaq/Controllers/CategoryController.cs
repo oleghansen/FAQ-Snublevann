@@ -13,17 +13,17 @@ using nettbutikkfaq.Models;
 
 namespace nettbutikkfaq
 {
-    public class FaqController : ApiController
+    public class CategoryController : ApiController
     {
-        FaqDB faqDb = new FaqDB();
+        CategoryDB catDb = new CategoryDB();
 
         // GET api/faq
         public HttpResponseMessage GetAll()
         {
-            List<Faq> alleFaqs = faqDb.hentAlleFaqs();
+            List<Category> alleCats = catDb.hentAlleCategories();
 
             var Json = new JavaScriptSerializer();
-            string JsonString = Json.Serialize(alleFaqs);
+            string JsonString = Json.Serialize(alleCats);
 
             return new HttpResponseMessage()
             {
@@ -31,7 +31,7 @@ namespace nettbutikkfaq
                 StatusCode = HttpStatusCode.OK
             };
         }
-
+        /*
         public HttpResponseMessage GetUbesvarte()
         {
             List<Faq> ubesvarte = faqDb.hentUbesvarte();
@@ -46,7 +46,7 @@ namespace nettbutikkfaq
             };
         }
 
-        public HttpResponseMessage GetCategoryFaqs(int id)
+        public HttpResponseMessage Get(int id)
         {
             List<Faq> katFaqs = faqDb.hentKategoriFaqs(id);
 
@@ -58,28 +58,7 @@ namespace nettbutikkfaq
                 Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
                 StatusCode = HttpStatusCode.OK
             };
-        }
-
-        public HttpResponseMessage Post(Faq innFaq)
-        {
-            if (ModelState.IsValid)
-            {
-                bool OK = faqDb.leggTilFaq(innFaq);
-                if (OK)
-                {
-                    return new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.OK
-                    };
-
-                }
-            }
-            return new HttpResponseMessage()
-            {
-                StatusCode = HttpStatusCode.NotFound,
-                Content = new StringContent("Kunne ikke sette inn FAQ i DB")
-            };
-        }
+        } */
 
         // GET api/Kunde/5
      /* public HttpResponseMessage Get(int id)

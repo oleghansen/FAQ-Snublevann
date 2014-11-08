@@ -2,10 +2,14 @@
 
 App.controller("faqController", function ($scope, $http) {
 
-    var url = '/api/Faq/GetAll';
+    var url1 = '/api/Faq/GetAll';
+    var url2 = '/api/Faq/GetUbesvarte';
+    var url3 = '/api/Category/GetAll';
+    var url4 = '/api/Category/GetCategoryFaqs/';
+    var url5 = '/api/Faq/Post/';
     
     function hentAlleFaqs() {
-        $http.get(url).
+        $http.get(url1).
           success(function (alleFaqs) {
               onLoad();
               $scope.faqs = alleFaqs;
@@ -26,9 +30,9 @@ App.controller("faqController", function ($scope, $http) {
     hentAlleFaqs();
 
 
-    var url = '/api/Faq/GetUbesvarte';
+    
     function hentUbesvarte() {
-        $http.get(url).
+        $http.get(url2).
           success(function (ubesvarte) {
               $scope.ubesvarte = ubesvarte,
               $scope.laster = false,
@@ -56,30 +60,72 @@ App.controller("faqController", function ($scope, $http) {
     $scope.visFaqsFunction = function () {
         hideAll();
         $scope.visFaqs = true;
+        $scope.visKategoriPanel = true;
     };
 
     $scope.visSkjemaFunction = function () {
         hideAll();
+        hentAlleCategories();
+        $scope.send = true;
         $scope.visSkjema = true;
     };
+
+    $scope.visKategoriFunction = function (id) {
+        hideAll();
+        hentKategoriFaqs(id);
+    };
+
     $scope.hentUbesvarte = function () {
         hideAll();
         hentUbesvarte();
     }
 
+    $scope.sendFunction = function () {
+        $scope.leggTilFaq();
+    }
 
-    /*function hentKategoriKunder(id) {
-        $http.get(url + id).
-          success(function (katFaqs) {
-              $scope.katfaqs = katFaqs;
-              $scope.laster = false;
+    $scope.leggTilFaq = function() {
+        var nyfaq = {
+        navn: $scope.navn,
+        epost: $scope.epost,
+        kategori: $scope.kategori,
+        sporsmal: $scope.sporsmal
+        };
+
+        $http.post(url5, nyfaq).
+          success(function (data) {
+              hentAlleFaqs();
+              onLoad();
+              console.log("Lagre kunder OK!")
           }).
           error(function (data, status) {
               console.log(status + data);
           });
     };
 
-    */
+    function hentAlleCategories() {
+        $http.get(url3).
+          success(function (alleCats) {
+              $scope.cats = alleCats;
+
+          }).
+          error(function (data, status) {
+              console.log(status + data);
+          });
+    };
+
+    function hentKategoriFaqs(id) {
+        $http.get(url4 + id).
+          success(function (katFaqs) {
+              $scope.katfaqs = katFaqs;
+              $scope.visKategoriFaqs = true;
+          }).
+          error(function (data, status) {
+              console.log(status + data);
+          });
+    };
+
+    
    /* $scope.visRegistrerSkjema = function () {
         $scope.fornavn = "";
         $scope.etternavn = "";
@@ -190,7 +236,9 @@ App.controller("faqController", function ($scope, $http) {
         $scope.visUbesvarte = false;
     };
 
-    function hideAll(){
+    function hideAll() {
+        $scope.visKategoriPanel = false;
+        $scope.visKategoriFaqs = false;
         $scope.visFaqs = false;
         $scope.visSkjema = false;
         $scope.visUbesvarte = false;

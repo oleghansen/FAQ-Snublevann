@@ -112,11 +112,14 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Custom\customNav2.css" />
     <Content Include="Content\Custom\customNav.css" />
+    <Content Include="Content\Custom\MainSheet2.css" />
     <Content Include="Content\Custom\MainSheet.css" />
     <Content Include="Content\img\snublevann.png" />
     <Content Include="Global.asax" />
     <Content Include="scripts\App\faqController.js" />
+    <Content Include="scripts\App\index2.html" />
     <Content Include="scripts\LibJS\angular.min.js" />
     <Content Include="scripts\LibJS\bootstrap.min.css" />
     <Content Include="scripts\LibJS\bootstrap.min.js" />

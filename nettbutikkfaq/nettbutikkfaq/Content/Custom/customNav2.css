@@ -1,0 +1,30 @@
+﻿.navbar-inner{
+background: #ffffff; /* Old browsers */
+
+margin-bottom:0px;
+
+}
+
+.navUl
+{
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.navUl a
+{
+    margin-right: 42px;
+    font-family: sans-serif;
+    color:#dfc8ab;
+}
+
+    .navUl a:hover, a:visited {
+        background: transparent;
+        text-decoration: none;
+    }
+
+    .navUl a:focus
+    {
+        outline: 0;
+        text-decoration: none;
+    }

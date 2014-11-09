@@ -13,49 +13,27 @@
     <title></title>
 </head>
 <body>
-    <div ng-controller="faqController">
-        <div class="container banner">
+    
+        <div class="container">
             <div class="navbar navbar-inner" role="navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <div class="row">
-                        <div class="collapse navbar-collapse navbar-ex1-collapse">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12">
-                                    <img src="../../Content/img/snublevann.png" id="logo" width="230" height="96" style="margin-top: 20px; margin-left: 20px" />
-                                </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="row">
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <img src="../../Content/img/snublevann.png" id="logo" width="230" height="96" style="margin-top: 20px; margin-left: 20px" />
                             </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12">
-                                    <div class="row panel" style="padding-left: 0px; padding-right: 0px; margin-left:0px; margin-right:0px; margin-bottom: 0px">
-                                        <div class="col-sm-12 col-md-12">
-                                            <div class="pull-left">
-
-                                                <div class="row">
-                                                    <button class="btn btn-primary" id="primaryButton" ng-click="visFaqsFunction()" ng-show="visFaqKnapp" style="min-width:83px">Se FAQ</button>
-                                                    <div ng-show="visKategoriPanel" class="btn-group" ng-repeat="cat in cats">
-                                                        <button class="btn btn-default" id="defaultButton" ng-click="visKategoriFunction(cat.id)">{{cat.name}}</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button class="btn btn-primary pull-right" style="margin-left:5px" id="primaryButton" ng-click="visSkjemaFunction()" ng-show="sendKnapp">Spør oss</button>
-                                            <button class="btn btn-primary pull-right" id="primaryButton" ng-click="hentUbesvarte()" ng-show="visInnsendteKnapp">Vis innsendte spørsmål</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" ng-show="visKategoriPanel" style="padding-left: 0px; padding-top:0px; padding-right: 0px; margin-left:0px; margin-right:0px; margin-bottom: 0px">
-                                <div class="col-sm-12 col-md-12">
-
-
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="navUl pull-right">
                                 </div>
                             </div>
                         </div>
@@ -63,11 +41,35 @@
                 </div>
             </div>
         </div>
-        <div class="midcontent">
-            <div class="container">
-                <div class="jumbotron" style="padding-top: 2px">
+        <div class="container">
+            <div class="jumbotron" style="padding-top: 2px">
 
-                    <div class="row">
+                <div class="row">
+
+                    <div ng-controller="faqController">
+                        <div class="row panel" style="padding-left: 0px; padding-right: 0px; margin-left:0px; margin-right:0px; margin-bottom: 15px">
+                            <div class="col-sm-12 col-md-12 col-centered">
+                                <div class="btn-group pull-left">
+                                    <button class="btn btn-primary" ng-click="visFaqsFunction()" ng-show="visFaqKnapp">Se FAQ</button>
+                                    <button class="btn btn-primary" ng-click="visSkjemaFunction()" ng-show="sendKnapp">Spør oss</button>
+
+
+                                </div>
+                                <button class="btn btn-primary pull-right" ng-click="hentUbesvarte()" ng-show="visInnsendteKnapp">Vis innsendte spørsmål</button>
+                            </div>
+                          
+
+                            <div class="row" ng-show="visKategoriPanel" style="padding-left: 0px; padding-top:0px; padding-right: 0px; margin-left:0px; margin-right:0px; margin-bottom: 0px">
+                                <div class="col-sm-12 col-md-12 col-centered">
+                                    <br />
+
+                                    <div class="btn-group" ng-repeat="cat in cats">
+                                        <button class="btn btn-default" ng-click="visKategoriFunction(cat.id)">{{cat.name}}</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="page-header text-center"><h2>Frequently asked questions</h2></div>
 
@@ -75,32 +77,29 @@
 
 
                         <div class="row">
-                            <div class="text-center" ng-show="laster">
-                                <h3>Laster FAQ, vennligst vent ...</h3><
-                                /><h5>(Dette kan ta en stund første gang man kjører.)</h5>
-                            </div>
+                            <div class="text-center" ng-show="laster"><h3>Laster FAQ, vennligst vent ...</h3><br /><h5>(Dette kan ta en stund første gang man kjører.)</h5></div>
                             <!-- <div class="col-sm-12 col-md-12" ng-show="visFaqs">
-                                <table class="table table-bordered table-condensed">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Tittel</th>
-                                            <th>Spørsmål</th>
-                                            <th>Svar</th>
-                                            <th>Kategori</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody ng-repeat="katfaqs in faqs">
-                                        <tr>
-                                            <td>{{katfaqs.id}}</td>
-                                            <td>{{katfaqs.title}}</td>
-                                            <td>{{katfaqs.question}}</td>
-                                            <td>{{katfaqs.answer}}</td>
-                                            <td>{{katfaqs.category}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div> -->
+                 <table class="table table-bordered table-condensed">
+                     <thead>
+                         <tr>
+                             <th>ID</th>
+                             <th>Tittel</th>
+                             <th>Spørsmål</th>
+                             <th>Svar</th>
+                             <th>Kategori</th>
+                         </tr>
+                     </thead>
+                     <tbody ng-repeat="katfaqs in faqs">
+                         <tr>
+                             <td>{{katfaqs.id}}</td>
+                             <td>{{katfaqs.title}}</td>
+                             <td>{{katfaqs.question}}</td>
+                             <td>{{katfaqs.answer}}</td>
+                             <td>{{katfaqs.category}}</td>
+                         </tr>
+                     </tbody>
+                 </table>
+             </div> -->
                             <div class="col-sm-12 col-md-12" ng-show="visFaqs">
                                 <div class="panel-group" id="accordion">
                                     <div ng-repeat="faq in faqs">
@@ -114,14 +113,14 @@
                                                     </h4>
                                                 </div>
                                             </a>
-
-
+                                               
+                                            
                                             <div id="{{$index}}" class="panel-collapse collapse">
                                                 <div class="panel-body">
                                                     <label id="smallGray">{{faq.category}}</label><button class="btn btn-default btn-xs pull-right" id="defaultButton" style="border:0px;" ng-click="visDetaljerFunction(faq.id)" ng-show="detaljer">Les mer</button>
                                                     <br />
                                                     {{faq.answer}}
-
+                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -129,10 +128,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-12" ng-show="visKategoriFaqs">
-                                <div class="panel-group" id="accordion">
-
+                                 <div class="panel-group" id="accordion">
+                                    
                                     <div ng-repeat="faq in katfaqs">
-
+                                        
                                         <div class="panel panel-default">
                                             <a data-toggle="collapse" data-target="#{{$index}}"
                                                href="#collapse">
@@ -155,13 +154,13 @@
                             </div>
                             <div class="col-md-12 col-sm-12" ng-show="visDetaljer">
                                 <div class="panel panel-heading" style="padding-top:20px; padding-bottom:20px; padding-left:20px; padding-right:20px" ng-show="visDetaljer">
-
-                                    <label id="smallGray">Spørsmål#{{faqdetaljer.id}}</label><br />
-                                    <h3>{{faqdetaljer.title}}</h3>
-                                    <blockquote>
+                                 
+                                    <label id="smallGray">Spørsmål#{{faqdetaljer.id}}</label><br /> 
+                                        <h3>{{faqdetaljer.title}}</h3>
+                                        <blockquote>
                                         <h4>{{faqdetaljer.question}}</h4>
                                         <footer><cite title="answer">{{faqdetaljer.answer}}</cite></footer>
-                                    </blockquote>
+                                        </blockquote>
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12" ng-show="visUbesvarte">
@@ -225,22 +224,17 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-4 col-md-4" ng-show="visSkjema">
-                                        <label>Spørsmål</label>
-                                        <textarea class="form-control" rows="17" name="sporsmal" ng-model="sporsmal" ng-required="true" style="resize: none" ng-pattern="/^[a-zøæåA-ZØÆÅ. \-]{2,30}$/" />
-                                        <p class="label label-info" ng-show="skjema.sporsmal.$invalid && skjema.spormal.$dirty">Skriv inn ditt spørsmål</p>
+                                            <label>Spørsmål</label>
+                                            <textarea class="form-control" rows="17" name="sporsmal" ng-model="sporsmal" ng-required="true" style="resize: none" ng-pattern="/^[a-zøæåA-ZØÆÅ. \-]{2,30}$/" />
+                                            <p class="label label-info" ng-show="skjema.sporsmal.$invalid && skjema.spormal.$dirty">Skriv inn ditt spørsmål</p>
                                     </div>
                                 </form>
                             </div>
                         </div>
 
-                    </div>
+                 </div>
                 </div>
-            </div>
         </div>
-        <div class="botcontent">
-            <div class="container">
-                HEHEHEEHEHHE
-            </div>
-        </div>
+    </div>
 </body>
 </html>

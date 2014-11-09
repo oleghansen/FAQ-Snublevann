@@ -75,6 +75,26 @@ namespace nettbutikkfaq
             }
             return katFaqs;
         }
+        public Faq hentFaq(int id)
+        {
+            var enFaq = new Faq();
+            var faq2 = db.Faqs.Where(p => p.Id == id).ToList();
+            foreach (var f in faq2)
+            {
+                enFaq = new Faq()
+                {
+                    id = f.Id,
+                    name = f.Name,
+                    epost = f.Epost,
+                    title = f.Title,
+                    question = f.Question,
+                    answer = f.Answer,
+                    category = f.Category.Name
+                };
+            }
+            return enFaq;
+            
+        }
 
         public bool leggTilFaq(Faq innFaq)
         {

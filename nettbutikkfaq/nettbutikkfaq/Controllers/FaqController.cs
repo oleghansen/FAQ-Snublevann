@@ -60,6 +60,21 @@ namespace nettbutikkfaq
             };
         }
 
+        public HttpResponseMessage GetFaq(int id)
+        {
+            Faq faq = faqDb.hentFaq(id);
+            
+
+            var Json = new JavaScriptSerializer();
+            string JsonString = Json.Serialize(faq);
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(JsonString, Encoding.UTF8, "application/json"),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
         public HttpResponseMessage PostFaq(Faq innFaq)
         {
             if (ModelState.IsValid)

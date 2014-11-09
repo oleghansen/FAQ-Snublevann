@@ -9,10 +9,16 @@
     <script src="faqController.js"></script>
     <link href="../../Content/Custom/MainSheet2.css" rel="stylesheet" />
     <link href="../../Content/Custom/customNav2.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $('#accordion').on('show.bs.collapse', function () {
+            $('#accordion .in').collapse('hide');
+        });
+    </script>
 
     <title></title>
 </head>
 <body>
+
     <div ng-controller="faqController">
         <div class="container banner">
             <div class="navbar navbar-inner" role="navigation">
@@ -63,6 +69,14 @@
                 </div>
             </div>
         </div>
+        <div class="subcontent">
+            <div class="container">
+            </div>
+        </div>
+        <div class="botcontent">
+            <div class="container">
+            </div>
+        </div>
         <div class="midcontent">
             <div class="container">
                 <div class="jumbotron" style="padding-top: 2px">
@@ -106,7 +120,7 @@
                                     <div ng-repeat="faq in faqs">
                                         <div class="panel panel-default">
 
-                                            <a data-toggle="collapse" data-target="#{{$index}}"
+                                            <a data-toggle="collapse" data-parent="#accordion"     data-target="#{{$index}}"
                                                href="#collapse">
                                                 <div class="panel-heading" style="background-color:#f8f8f8">
                                                     <h4 class="panel-title">
@@ -116,131 +130,128 @@
                                             </a>
 
 
-                                            <div id="{{$index}}" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    <label id="smallGray">{{faq.category}}</label><button class="btn btn-default btn-xs pull-right" id="defaultButton" style="border:0px;" ng-click="visDetaljerFunction(faq.id)" ng-show="detaljer">Les mer</button>
-                                                    <br />
-                                                    {{faq.answer}}
+ <div id="{{$index}}" class="panel-collapse collapse">
+     <div class="panel-body">
+         <label id="smallGray">{{faq.category}}</label><button class="btn btn-default btn-xs pull-right" id="defaultButton" style="border:0px;" ng-click="visDetaljerFunction(faq.id)" ng-show="detaljer">Les mer</button>
+         <br />
+         {{faq.answer}}
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-12" ng-show="visKategoriFaqs">
-                                <div class="panel-group" id="accordion">
+     </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-sm-12 col-md-12" ng-show="visKategoriFaqs">
+    <div class="panel-group" id="accordion">
 
-                                    <div ng-repeat="faq in katfaqs">
+        <div ng-repeat="faq in katfaqs">
 
-                                        <div class="panel panel-default">
-                                            <a data-toggle="collapse" data-target="#{{$index}}"
-                                               href="#collapse">
-                                                <div class="panel-heading" style="background-color:#f8f8f8">
-                                                    <h4 class="panel-title">
-                                                        {{faq.question}}
-                                                    </h4>
-                                                </div>
-                                            </a>
-                                            <div id="{{$index}}" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    <label id="smallGray">{{faq.category}}</label>
-                                                    <br />
-                                                    {{faq.answer}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-sm-12" ng-show="visDetaljer">
-                                <div class="panel panel-heading" style="padding-top:20px; padding-bottom:20px; padding-left:20px; padding-right:20px" ng-show="visDetaljer">
+            <div class="panel panel-default">
+                <a data-toggle="collapse" data-target="#{{$index}}"
+    href="#collapse">
+     <div class="panel-heading" style="background-color:#f8f8f8">
+         <h4 class="panel-title">
+             {{faq.question}}
+         </h4>
+     </div>
+ </a>
+ <div id="{{$index}}" class="panel-collapse collapse">
+     <div class="panel-body">
+         <label id="smallGray">{{faq.category}}</label>
+         <br />
+         {{faq.answer}}
+     </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-12 col-sm-12" ng-show="visDetaljer">
+    <div class="panel panel-heading" style="padding-top:20px; padding-bottom:20px; padding-left:20px; padding-right:20px" ng-show="visDetaljer">
 
-                                    <label id="smallGray">Spørsmål#{{faqdetaljer.id}}</label><br />
-                                    <h3>{{faqdetaljer.title}}</h3>
-                                    <blockquote>
-                                        <h4>{{faqdetaljer.question}}</h4>
-                                        <footer><cite title="answer">{{faqdetaljer.answer}}</cite></footer>
-                                    </blockquote>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-sm-12" ng-show="visUbesvarte">
-                                <table class="table table-bordered table-condensed">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Navn</th>
-                                            <th>E-post</th>
-                                            <th>Tittel</th>
-                                            <th>Spørsmål</th>
-                                            <th>Svar</th>
-                                            <th>Kategori</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody ng-repeat="ubesvart in ubesvarte">
-                                        <tr>
-                                            <td>{{ubesvart.id}}</td>
-                                            <td>{{ubesvart.name}}</td>
-                                            <td>{{ubesvart.epost}}</td>
-                                            <td>{{ubesvart.title}}</td>
-                                            <td>{{ubesvart.question}}</td>
-                                            <td><small>Mangler svar</small></td>
-                                            <td>{{ubesvart.category}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+        <label id="smallGray">Spørsmål#{{faqdetaljer.id}}</label><br />
+        <h3>{{faqdetaljer.title}}</h3>
+        <blockquote>
+            <h4>{{faqdetaljer.question}}</h4>
+            <footer><cite title="answer">{{faqdetaljer.answer}}</cite></footer>
+        </blockquote>
+    </div>
+</div>
+<div class="col-md-12 col-sm-12" ng-show="visUbesvarte">
+    <table class="table table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Navn</th>
+                <th>E-post</th>
+                <th>Tittel</th>
+                <th>Spørsmål</th>
+                <th>Svar</th>
+                <th>Kategori</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="ubesvart in ubesvarte">
+            <tr>
+                <td>{{ubesvart.id}}</td>
+                <td>{{ubesvart.name}}</td>
+                <td>{{ubesvart.epost}}</td>
+                <td>{{ubesvart.title}}</td>
+                <td>{{ubesvart.question}}</td>
+                <td><small>Mangler svar</small></td>
+                <td>{{ubesvart.category}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-                        </div>
-                        <div class="panel panel-heading" style="padding-top:20px; padding-bottom:20px; padding-left:20px; padding-right:20px" ng-show="visSkjema">
-                            <div class="row">
-                                <form name="skjema">
-                                    <div class="col-sm-4 col-md-4" ng-show="visSkjema">
+</div>
+<div class="panel panel-heading" style="padding-top:20px; padding-bottom:20px; padding-left:20px; padding-right:20px" ng-show="visSkjema">
+    <div class="row">
+        <form name="skjema">
+            <div class="col-sm-4 col-md-4" ng-show="visSkjema">
 
-                                        <div class="form-group">
-                                            <label>Navn</label>
-                                            <input class="form-control" name="navn" ng-model="navn" ng-required="true" ng-pattern="/^[a-zæøåA-ZÆØÅ. \-]{2,30}$/" />
-                                            <p class="label label-info" ng-show="skjema.navn.$invalid && skjema.navn.$dirty">Skriv inn et lovlig navn</p>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>E-post</label>
-                                            <input class="form-control" name="epost" ng-model="epost" ng-required="true" ng-pattern="/^[a-zøæåA-ZØÆÅ0-9.@\-]{2,30}$/" />
-                                            <p class="label label-info" ng-show="skjema.epost.$invalid && skjema.epost.$dirty">Skriv inn en lovlig e-post</p>
-                                        </div>
-                                        <div class="alert alert-info">
-                                            <div class="form-inline">
-                                                <label class="control-label">
-                                                    Kategori
-                                                </label>
-                                                <div ng-repeat="cat in cats">
-                                                    <label class="radio">
-                                                        <input value="{{$index}}" name="kategori" ng-model="kategori" type="radio">  {{cat.name}}
-                                                    </label>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-primary" ng-click="leggTilFaq()" ng-disabled="skjema.$invalid" ng-show="send">Send inn</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 col-md-4" ng-show="visSkjema">
-                                        <label>Spørsmål</label>
-                                        <textarea class="form-control" rows="17" name="sporsmal" ng-model="sporsmal" ng-required="true" style="resize: none" ng-pattern="/^[a-zøæåA-ZØÆÅ. \-]{2,30}$/" />
-                                        <p class="label label-info" ng-show="skjema.sporsmal.$invalid && skjema.spormal.$dirty">Skriv inn ditt spørsmål</p>
-                                    </div>
-                                </form>
-                            </div>
+                <div class="form-group">
+                    <label>Navn</label>
+                    <input class="form-control" name="navn" ng-model="navn" ng-required="true" ng-pattern="/^[a-zæøåA-ZÆØÅ. \-]{2,30}$/" />
+                    <p class="label label-info" ng-show="skjema.navn.$invalid && skjema.navn.$dirty">Skriv inn et lovlig navn</p>
+                </div>
+                <div class="form-group">
+                    <label>E-post</label>
+                    <input class="form-control" name="epost" ng-model="epost" ng-required="true" ng-pattern="/^[a-zøæåA-ZØÆÅ0-9.@\-]{2,30}$/" />
+                    <p class="label label-info" ng-show="skjema.epost.$invalid && skjema.epost.$dirty">Skriv inn en lovlig e-post</p>
+                </div>
+                <div class="alert alert-info">
+                    <div class="form-inline">
+                        <label class="control-label">
+                            Kategori
+                        </label>
+                        <div ng-repeat="cat in cats">
+                            <label class="radio">
+                                <input value="{{$index}}" name="kategori" ng-model="kategori" type="radio">  {{cat.name}}
+                            </label>
                         </div>
 
                     </div>
                 </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" ng-click="leggTilFaq()" ng-disabled="skjema.$invalid" ng-show="send">Send inn</button>
+                </div>
             </div>
-        </div>
-        <div class="botcontent">
-            <div class="container">
-                HEHEHEEHEHHE
+            <div class="col-sm-4 col-md-4" ng-show="visSkjema">
+                <label>Spørsmål</label>
+                <textarea class="form-control" rows="17" name="sporsmal" ng-model="sporsmal" ng-required="true" style="resize: none" ng-pattern="/^[a-zøæåA-ZØÆÅ. \-]{2,30}$/" />
+                <p class="label label-info" ng-show="skjema.sporsmal.$invalid && skjema.spormal.$dirty">Skriv inn ditt spørsmål</p>
             </div>
-        </div>
+        </form>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
 </body>
 </html>

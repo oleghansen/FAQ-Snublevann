@@ -27,11 +27,21 @@ background: linear-gradient(to bottom,  #145892 1%,#3294ef 15%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#145892', endColorstr='#3294ef',GradientType=0 ); /* IE6-9 */
 }
 
+.subcontent
+{
+    width:100%;
+    min-height: 40px;
+    position:relative;
+    background: #464646; /* Old browsers */
+}
+
+
 .botcontent
 {
     width:100%;
-    min-height: 100px;
-    position: absolute;
+    z-index: 2;
+    min-height: 80px;
+    position:fixed;
     bottom: 0px;
     background: #464646; /* Old browsers */
 }
@@ -235,6 +245,7 @@ box-shadow:         0px 5px 8px 0px rgba(50, 50, 50, 0.27);
 	-webkit-transition: .5s;
 	transition: .5s;
 }
+
 
 #defaultButton:active, #defaultButton:focus
 {

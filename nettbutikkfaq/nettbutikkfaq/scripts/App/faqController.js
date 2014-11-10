@@ -9,10 +9,9 @@ App.controller("faqController", function ($scope, $http) {
     var url5 = '/api/Faq/PostFaq/';
     var url6 = '/api/Faq/GetFaq/';
     
-
-
     $scope.laster = true;
     hentAlleFaqs();
+    $scope.visSkjema = false;
 
 
     function hentAlleFaqs() {
@@ -21,9 +20,10 @@ App.controller("faqController", function ($scope, $http) {
               $scope.faqs = alleFaqs;
               hentAlleCategories();
               $scope.laster = false;
-              onLoad();
+              $scope.headerFaq = true;
+              $scope.visFaqsFunction();
               $scope.detaljer = true;
-
+             
               $scope.sendKnapp = true;
               $scope.visFaqKnapp = true;
               $scope.visInnsendteKnapp = true;
@@ -40,20 +40,23 @@ App.controller("faqController", function ($scope, $http) {
               $scope.ubesvarte = ubesvarte,
               $scope.laster = false,
               $scope.visUbesvarte = true
+              $scope.headerUbesvarte = true;
           }).
           error(function (data, status) {
               console.log(status + data);
           });
     };
-    $scope.laster = true;
+
 
 
 
     $scope.visSkjema = function () {
-        $scope.navn = "";
+        hideAll();
+        $scope.headerSpor = true;
+        $scope.name = "";
         $scope.epost = "";
-        $scope.kategori = "";
-        $scope.sporsmal = "";
+        $scope.category = "";
+        $scope.question = "";
         // for å unngå at noen av feltene gir "falske" feilmeldinger 
         $scope.skjema.$setPristine();
         $scope.send = true; // dette er knappen for å registrere i form´en.
@@ -61,6 +64,7 @@ App.controller("faqController", function ($scope, $http) {
 
     $scope.visFaqsFunction = function () {
         hideAll();
+        $scope.headerFaq = true;
         $scope.visKategoriPanel = true;
         $scope.visFaqs = true;
         $scope.detaljer = true;
@@ -71,6 +75,7 @@ App.controller("faqController", function ($scope, $http) {
         hentAlleCategories();
         $scope.send = true;
         $scope.visSkjema = true;
+        $scope.headerSpor = true;
     };
 
     $scope.visKategoriFunction = function (id) {
@@ -82,7 +87,6 @@ App.controller("faqController", function ($scope, $http) {
     $scope.visDetaljerFunction = function (id) {
         hideAll();
         hentFaq(id);
-        $scope.visDetaljer = true;
     };
 
     $scope.hentUbesvarte = function () {
@@ -93,15 +97,19 @@ App.controller("faqController", function ($scope, $http) {
     $scope.leggTilFaq = function () {
         console.log("Inne i leggTiLFaq");
         var nyfaq = {
-        name: $scope.navn,
+        name: $scope.name,
         epost: $scope.epost,
-        question: $scope.sporsmal
+        title: $scope.title,
+        question: $scope.question,
+        categoryid: $scope.category
         };
 
         $http.post(url5, nyfaq).
           success(function (data) {
+              hideAll();
               hentAlleFaqs();
-              onLoad();
+              $scope.headerTakk = true;
+             
               console.log("Lagre kunder OK!")
           }).
           error(function (data, status) {
@@ -126,7 +134,8 @@ App.controller("faqController", function ($scope, $http) {
             params: {id: id }
         }).success(function (katFaqs) {
               $scope.katfaqs = katFaqs;
-              $scope.visKategoriFaqs= true;
+              $scope.visKategoriFaqs = true;
+              $scope.headerFaq = true;
           }).
           error(function (data, status) {
               console.log(status + data);
@@ -136,6 +145,7 @@ App.controller("faqController", function ($scope, $http) {
     function hentFaq(id) {
 
         $http({url: url6,params: { id: id }}).success(function (faq) {
+
             $scope.faqdetaljer = faq;
             $scope.visDetaljer = true;
             $scope.visKategoriPanel = true;
@@ -148,13 +158,19 @@ App.controller("faqController", function ($scope, $http) {
 
 
     function onLoad() {
+        
         $scope.visFaqs = true;
+        $scope.visDetaljer = false;
         $scope.visSkjema = false;
         $scope.visUbesvarte = false;
     };
 
     function hideAll() {
-        $visDetaljer = false;
+        $scope.headerFaq = false;
+        $scope.headerUbesvarte = false;
+        $scope.headerSpor = false;
+        $scope.headerTakk = false;
+        $scope.visDetaljer = false;
         $scope.visKategoriPanel = false;
         $scope.visKategoriFaqs = false;
         $scope.visFaqs = false;

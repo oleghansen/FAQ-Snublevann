@@ -18,7 +18,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#145892', end
 @font-face 
 { 
     font-family: Custom;
-    src: url('../fonts/HelveticaNeueLTW1G-Lt.otf'); 
+    src: url('../../fonts/HelveticaNeueLTW1G-Lt.otf'); 
 } 
 
 
@@ -47,7 +47,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#145892', end
 {
     width:100%;
     z-index: 2;
-    min-height: 80px;
+    min-height: 40px;
     position:fixed;
     bottom: 0px;
     background: #464646; /* Old browsers */
@@ -158,7 +158,7 @@ opacity: 1;
 {
     margin-top: 80px;
     margin-bottom:15px;
-    min-height:415px;
+
     width:100%;
     margin-left: auto;
     margin-right: auto;

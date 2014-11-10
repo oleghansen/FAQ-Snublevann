@@ -102,9 +102,10 @@ namespace nettbutikkfaq
             {
                 Id = innFaq.id,
                 Name = innFaq.name,
-                Epost = innFaq.epost,
                 Title = innFaq.title,
-                Question = innFaq.question
+                Epost = innFaq.epost,
+                Question = innFaq.question,
+                CategoriesId = innFaq.categoryid
             };
             try
             {

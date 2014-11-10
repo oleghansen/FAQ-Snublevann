@@ -40,7 +40,7 @@ namespace nettbutikkfaq.Models
                     Epost = "faq@snublevann.no",
                     Title = "Hva er leveringstiden?",
                     Question = "Hva er leveringstiden deres?",
-                    Answer = "Dette avhenger såklart av hvor i landet du bor. Gudleik Knotten er ikke lenger noen ungkalv og vår levering ligger på ca. 25-30 arbeidsdager, noe avhengig av vær og temperatur.",
+                    Answer = "Dette avhenger såklart av hvor i landet du bor. Gudleik Knotten (se spørsmål 'Hvordan fraktes varene?') er ikke lenger noen ungkalv og vår levering ligger på ca. 25-30 arbeidsdager, noe avhengig av vær og temperatur.",
                     CategoriesId=2 },
 
                 new Faqs{

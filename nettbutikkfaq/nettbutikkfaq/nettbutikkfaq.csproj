@@ -116,6 +116,7 @@
     <Content Include="Content\Custom\customNav.css" />
     <Content Include="Content\Custom\MainSheet2.css" />
     <Content Include="Content\Custom\MainSheet.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\img\snublevann.png" />
     <Content Include="Global.asax" />
     <Content Include="scripts\App\faqController.js" />
@@ -126,9 +127,12 @@
     <Content Include="scripts\App\index.html" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\fonts\HelveticaNeueLTW1G-Blk.otf" />
-    <Content Include="Content\fonts\HelveticaNeueLTW1G-Hv %281%29.otf" />
-    <Content Include="Content\fonts\HelveticaNeueLTW1G-Lt.otf" />
+    <Content Include="fonts\HelveticaNeueLTW1G-Blk.otf" />
+    <Content Include="fonts\HelveticaNeueLTW1G-Hv %281%29.otf" />
+    <Content Include="fonts\HelveticaNeueLTW1G-Lt.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="scripts\LibJS\jquery-2.1.1.intellisense.js" />
     <Content Include="scripts\LibJS\jquery-2.1.1.min.js" />
     <Content Include="Web.config">

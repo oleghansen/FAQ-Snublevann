@@ -20,7 +20,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#145892', end
     font-family: Custom;
     src: url('../../fonts/HelveticaNeueLTW1G-Lt.otf'); 
 } 
+tr.rows
+{
+     border-right: 1px solid #eeeeee;
+    padding-bottom: 1em;
+    padding-left: 20px;
+    -webkit-transition: .1s;
+    transition: .1s;
+}
 
+tr.rows:hover
+{
+    color: #ffffff;
+    background-color: #3294ef;
+	-o-transition: .4s;
+	-ms-transition: .4s;
+	-moz-transition: .4s;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
 
 .midcontent
 {

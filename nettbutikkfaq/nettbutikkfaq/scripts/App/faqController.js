@@ -9,9 +9,10 @@ App.controller("faqController", function ($scope, $http) {
     var url5 = '/api/Faq/PostFaq/';
     var url6 = '/api/Faq/GetFaq/';
     
+    hideAll();
     $scope.laster = true;
-    hentAlleFaqs();
     $scope.visSkjema = false;
+    hentAlleFaqs();
 
 
     function hentAlleFaqs() {
@@ -23,7 +24,7 @@ App.controller("faqController", function ($scope, $http) {
               $scope.headerFaq = true;
               $scope.visFaqsFunction();
               $scope.detaljer = true;
-             
+              
               $scope.sendKnapp = true;
               $scope.visFaqKnapp = true;
               $scope.visInnsendteKnapp = true;
@@ -53,6 +54,7 @@ App.controller("faqController", function ($scope, $http) {
     $scope.visSkjema = function () {
         hideAll();
         $scope.headerSpor = true;
+        $scope.visSporreSkjema = true;
         $scope.name = "";
         $scope.epost = "";
         $scope.category = "";
@@ -64,8 +66,8 @@ App.controller("faqController", function ($scope, $http) {
 
     $scope.visFaqsFunction = function () {
         hideAll();
-        $scope.headerFaq = true;
         $scope.visKategoriPanel = true;
+        $scope.headerFaq = true;
         $scope.visFaqs = true;
         $scope.detaljer = true;
     };
@@ -74,7 +76,7 @@ App.controller("faqController", function ($scope, $http) {
         hideAll();
         hentAlleCategories();
         $scope.send = true;
-        $scope.visSkjema = true;
+        $scope.visSkjema();
         $scope.headerSpor = true;
     };
 
@@ -107,8 +109,8 @@ App.controller("faqController", function ($scope, $http) {
         $http.post(url5, nyfaq).
           success(function (data) {
               hideAll();
-              hentAlleFaqs();
               $scope.headerTakk = true;
+              $scope.visTakk = true;
              
               console.log("Lagre kunder OK!")
           }).
@@ -161,7 +163,6 @@ App.controller("faqController", function ($scope, $http) {
         
         $scope.visFaqs = true;
         $scope.visDetaljer = false;
-        $scope.visSkjema = false;
         $scope.visUbesvarte = false;
     };
 
@@ -170,11 +171,12 @@ App.controller("faqController", function ($scope, $http) {
         $scope.headerUbesvarte = false;
         $scope.headerSpor = false;
         $scope.headerTakk = false;
+        $scope.visTakk = false;
         $scope.visDetaljer = false;
         $scope.visKategoriPanel = false;
         $scope.visKategoriFaqs = false;
         $scope.visFaqs = false;
-        $scope.visSkjema = false;
+        $scope.visSporreSkjema = false;
         $scope.visUbesvarte = false;
     };
 });

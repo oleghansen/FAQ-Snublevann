@@ -95,28 +95,7 @@
                                 <h5>(Dette kan ta en stund første gang man kjører.)</h5>
                             </div>
 
-                            <!-- <div class="col-sm-12 col-md-12" ng-show="visFaqs">
-                                <table class="table table-bordered table-condensed">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Tittel</th>
-                                            <th>Spørsmål</th>
-                                            <th>Svar</th>
-                                            <th>Kategori</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody ng-repeat="katfaqs in faqs">
-                                        <tr>
-                                            <td>{{katfaqs.id}}</td>
-                                            <td>{{katfaqs.title}}</td>
-                                            <td>{{katfaqs.question}}</td>
-                                            <td>{{katfaqs.answer}}</td>
-                                            <td>{{katfaqs.category}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div> -->
+                          
 
                             <div class="col-sm-12 col-md-12" ng-show="visFaqs">
                                 <hr style="background-color:#d7d7d7; height: 1px" />
@@ -161,29 +140,32 @@
                             </div>
                             <div class="col-sm-12 col-md-12" ng-show="visKategoriFaqs">
                                 <hr style="background-color:#d7d7d7; height: 1px" />
-                                <div class="panel-group" id="accordion">
-                                    <div ng-repeat="faq in katfaqs">
-                                        <div class="panel panel-default">
-                                            <a data-toggle="collapse" data-parent="accordion" data-target="#{{$index + 1000}}"
-                                               href="#collapse">
-                                                <div class="panel-heading" style="background-color:#f8f8f8">
+                                <div ng-repeat="faq in katfaqs|limitTo:1">
+                                    <h3>{{faq.category}}</h3>
+                                </div>
+                                    <div class="panel-group" id="accordion">
+                                        <div ng-repeat="faq in katfaqs">
+                                            <div class="panel panel-default">
+                                                <a data-toggle="collapse" data-parent="accordion" data-target="#{{$index + 1000}}"
+                                                   href="#collapse">
+                                                    <div class="panel-heading" style="background-color:#f8f8f8">
 
-                                                    <h4 class="panel-title">
-                                                        {{faq.question}}
-                                                    </h4>
-                                                </div>
-                                            </a>
-                                            <div id="{{$index + 1000}}" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    <label id="smallGray">{{faq.category}}</label><button class="btn btn-default btn-xs pull-right" id="defaultButton" style="border:0px;" ng-click="visDetaljerFunction(faq.id)" ng-show="detaljer">Les mer</button>
-                                                    <br />
-                                                    {{faq.answer}}
+                                                        <h4 class="panel-title">
+                                                            {{faq.question}}
+                                                        </h4>
+                                                    </div>
+                                                </a>
+                                                <div id="{{$index + 1000}}" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <label id="smallGray">{{faq.category}}</label><button class="btn btn-default btn-xs pull-right" id="defaultButton" style="border:0px;" ng-click="visDetaljerFunction(faq.id)" ng-show="detaljer">Les mer</button>
+                                                        <br />
+                                                        {{faq.answer}}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             <div class="col-sm-12 col-md-12" ng-show="visTakk">
                                 <hr style="background-color:#d7d7d7; height: 1px" />
                                 Vi har for tiden stor pågang, men vil svare deg så fort som mulig på eposten du oppga

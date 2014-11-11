@@ -32,7 +32,7 @@ namespace nettbutikkfaq.Models
                     Name = "FAQ",
                     Epost = "faq@snublevann.no",
                     Title = "Hvordan fraktes varene?",
-                    Question = "Hvordan fraktes varenee fra lager og hjem til meg? Kan jeg være sikker på at noe ikke knuser på veien?",
+                    Question = "Hvordan fraktes varene fra lager og hjem til meg? Kan jeg være sikker på at noe ikke knuser på veien?",
                     Answer = "Dine varer fraktes fra lageret våres i Oslo og hele veien hjem til din dør av fotgjenger Gudleik Knotten, som forøvrig er er aktivt fargeblind og overkjørt en rekke ganger.",
                     CategoriesId=2 },
                 new Faqs{
@@ -41,14 +41,6 @@ namespace nettbutikkfaq.Models
                     Title = "Hva er leveringstiden?",
                     Question = "Hva er leveringstiden deres?",
                     Answer = "Dette avhenger såklart av hvor i landet du bor. Gudleik Knotten (se spørsmål 'Hvordan fraktes varene?') er ikke lenger noen ungkalv og vår levering ligger på ca. 25-30 arbeidsdager, noe avhengig av vær og temperatur.",
-                    CategoriesId=2 },
-
-                new Faqs{
-                    Name= "FAQ",
-                    Epost = "faq@snublevann.no",
-                    Title = "Hva er leveringstiden?",
-                    Question = "Hva er leveringstiden deres?",
-                    Answer = "Dette avhenger såklart av hvor i landet du bor. Gudleik Knotten er ikke lenger noen ungkalv og vår levering ligger på ca. 25-30 arbeidsdager, noe avhengig av vær og temperatur.",
                     CategoriesId=2 },
                 new Faqs{
                     Name = "FAQ",
@@ -74,6 +66,29 @@ namespace nettbutikkfaq.Models
                     Answer = "Du kan betale med Visa/MasterCard, faktura, eller ved levering (husk tips til Gudleik)",
                     CategoriesId=4 },
 
+                 new Faqs{
+                    Name = "FAQ",
+                    Epost = "faq@snublevann.no",
+                    Title = "Har dere et delbetalingsalternativ?",
+                    Question = "Går det an å delbatle hos dere?",
+                    Answer = "På dette tidspunkt opererer vi ikke med noen form for detbetalingsalternativ",
+                    CategoriesId=4 },
+
+                  new Faqs{
+                    Name = "FAQ",
+                    Epost = "faq@snublevann.no",
+                    Title = "Har dere en øvre grense på hvor mye en kan kjøpe for?",
+                    Question = "Har dere en øvre grense for hvor mange artikler, eller for hvor mange kroner, man kan kjøpe for?",
+                    Answer = "Vi har ingen grenser for hvor mye man kan kjøpe. Desto mer du kjøper - desto gladere blir alle parter.",
+                    CategoriesId=5 },
+                
+                    new Faqs{
+                    Name = "FAQ",
+                    Epost = "faq@snublevann.no",
+                    Title = "Hva er Snublevann.no sin visjon?",
+                    Question = "Har dere en visjon eller noe dere brenner for?",
+                    Answer = "Vår visjon er at alt folk trenger skal være tilgjengelig fra internett uavhengig av norsk lov. Vi har startet med alkohol, men vurderer også på sikt å lage nettbutikk for tobakk, genmodifisert mat, sex og pytonslanger.",
+                    CategoriesId=6 },
 
                     // Ubesvarte spørsmål
                  new Faqs{

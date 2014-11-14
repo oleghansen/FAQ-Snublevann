@@ -2,12 +2,12 @@
 
 App.controller("faqController", function ($scope, $http) {
 
-    var url1 = '/api/Faq/GetAll';
-    var url2 = '/api/Faq/GetUbesvarte';
-    var url3 = '/api/Category/GetAll';
-    var url4 = '/api/Faq/GetCategoryFaqs/';
-    var url5 = '/api/Faq/PostFaq/';
-    var url6 = '/api/Faq/GetFaq/';
+    var url1 = '../../api/Faq/GetAll';
+    var url2 = '../../api/Faq/GetUbesvarte';
+    var url3 = '../../api/Category/GetAll';
+    var url4 = '../../api/Faq/GetCategoryFaqs/';
+    var url5 = '../../api/Faq/PostFaq/';
+    var url6 = '../../api/Faq/GetFaq/';
     
     hideAll();
     $scope.laster = true;

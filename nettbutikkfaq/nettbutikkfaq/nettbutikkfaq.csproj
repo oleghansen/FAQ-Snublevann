@@ -133,6 +133,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\PublishProfiles\He.pubxml" />
     <None Include="scripts\LibJS\jquery-2.1.1.intellisense.js" />
     <Content Include="scripts\LibJS\jquery-2.1.1.min.js" />
     <Content Include="Web.config">

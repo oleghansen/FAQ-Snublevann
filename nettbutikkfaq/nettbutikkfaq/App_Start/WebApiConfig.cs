@@ -21,7 +21,7 @@ namespace nettbutikkfaq
             config.Routes.MapHttpRoute("DefaultApiPost", "Api/{controller}", new { action = "Post" }, new { httpMethod = new HttpMethodConstraint(HttpMethod.Post) });
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}/{id}",
+                routeTemplate: "Api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

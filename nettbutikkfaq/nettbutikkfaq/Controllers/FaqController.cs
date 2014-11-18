@@ -75,6 +75,27 @@ namespace nettbutikkfaq
             };
         }
 
+        public HttpResponseMessage PutLikeFaq(int id, Faq innFaq)
+        {
+            if (ModelState.IsValid)
+            {
+                bool OK = faqDb.likeFaq(id, innFaq);
+                if (OK)
+                {
+                    return new HttpResponseMessage()
+                    {
+                        StatusCode = HttpStatusCode.OK
+                    };
+                }
+            }
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.NotFound,
+                Content = new StringContent("Kunne ikke endre Faq i DB")
+            };
+        }
+
+
         public HttpResponseMessage PostFaq(Faq innFaq)
         {
             if (ModelState.IsValid)

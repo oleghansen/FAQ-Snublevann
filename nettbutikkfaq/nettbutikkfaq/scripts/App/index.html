@@ -100,7 +100,7 @@
                             <div class="col-sm-12 col-md-12" ng-show="visFaqs">
                                 <hr style="background-color:#d7d7d7; height: 1px" />
                                 <div class="panel-group" id="accordion">
-                                    <div ng-repeat="faq in faqs">
+                                    <div ng-repeat="faq in faqs |  orderBy:'-frequency'| limitTo: 8">
                                         <div class="panel panel-default">
 
                                             <a data-toggle="collapse" data-parent="#accordion" data-target="#{{$index}}"
@@ -117,11 +117,16 @@
                                                 <div class="panel-body">
                                                     <label id="smallGray">{{faq.category}}</label><button class="btn btn-default btn-xs pull-right" id="defaultButton" style="border:0px;" ng-click="visDetaljerFunction(faq.id)" ng-show="detaljer">Les mer</button>
                                                     <br />
-                                                    {{faq.answer}}
-
+                                                    <button class="btn btn-default pull-right" id="defaultButtonGreen" style="font-size: 16px" ng-click="like(faq.id)"><span class="glyphicon glyphicon-thumbs-up"></span> {{faq.frequency}}</button>
+                                                    <div>
+                                                         {{faq.answer}}
+                                                    </div>
+                                                    
                                                 </div>
+
                                             </div>
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -130,6 +135,7 @@
                                 <div class="panel panel-heading" style="padding-top:20px; padding-bottom:20px; padding-left:20px; padding-right:20px; margin-top:60px" ng-show="visDetaljer">
 
                                     <label id="smallGray">Spørsmål#{{faqdetaljer.id}}</label><br />
+                                    <button class="btn btn-default pull-right" id="defaultButtonGreen" style="font-size: 16px" ng-click="like(faqdetaljer.id)"><span class="glyphicon glyphicon-thumbs-up"></span> {{faqdetaljer.frequency}}</button>
                                     <h3>{{faqdetaljer.title}}</h3>
                                     <blockquote>
                                         <h4>{{faqdetaljer.question}}</h4>
@@ -144,27 +150,31 @@
                                     <h3>{{faq.category}}</h3>
                                 </div>
                                     <div class="panel-group" id="accordion">
-                                        <div ng-repeat="faq in katfaqs">
-                                            <div class="panel panel-default">
-                                                <a data-toggle="collapse" data-parent="accordion" data-target="#{{$index + 1000}}"
-                                                   href="#collapse">
-                                                    <div class="panel-heading" style="background-color:#f8f8f8">
+                                        <div ng-repeat="faq in katfaqs |  orderBy:'-frequency'| limitTo: 8">
+                                                <div class="panel panel-default">
+                                                    <a data-toggle="collapse" data-parent="accordion" data-target="#{{$index + 1000}}"
+                                                       href="#collapse">
+                                                        <div class="panel-heading" style="background-color:#f8f8f8">
 
-                                                        <h4 class="panel-title">
-                                                            {{faq.question}}
-                                                        </h4>
-                                                    </div>
-                                                </a>
-                                                <div id="{{$index + 1000}}" class="panel-collapse collapse">
-                                                    <div class="panel-body">
-                                                        <label id="smallGray">{{faq.category}}</label><button class="btn btn-default btn-xs pull-right" id="defaultButton" style="border:0px;" ng-click="visDetaljerFunction(faq.id)" ng-show="detaljer">Les mer</button>
-                                                        <br />
-                                                        {{faq.answer}}
+                                                            <h4 class="panel-title">
+                                                                {{faq.question}}
+                                                            </h4>
+                                                        </div>
+                                                    </a>
+                                                    <div id="{{$index + 1000}}" class="panel-collapse collapse">
+                                                        <div class="panel-body">
+                                                            <label id="smallGray">{{faq.category}}</label><button class="btn btn-default btn-xs pull-right" id="defaultButton" style="border:0px;" ng-click="visDetaljerFunction(faq.id)" ng-show="detaljer">Les mer</button>
+                                                            <br />
+                                                            <button class="btn btn-default pull-right" id="defaultButtonGreen" style="font-size: 16px" ng-click="like(faq.id)"><span class="glyphicon glyphicon-thumbs-up"></span> {{faq.frequency}}</button>
+
+                                                             <div>
+                                                            {{faq.answer}}
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             <div class="col-sm-12 col-md-12" ng-show="visTakk">
                                 <hr style="background-color:#d7d7d7; height: 1px" />
@@ -208,13 +218,13 @@
 
                                             <div class="form-group">
                                                 <label>Navn</label>
-                                                <input class="form-control" name="name" ng-model="name" ng-required="true" ng-pattern="/^[a-zæøåA-ZÆØÅ. \-]{2,30}$/" />
-                                                <p class="label label-info" ng-show="skjema.name.$invalid && skjema.name.$dirty">Skriv inn et lovlig navn</p>
+                                                <input class="form-control" name="name" ng-model="name" ng-required="true" ng-pattern="/^[a-zæøåA-ZÆØÅ. \-]{3,30}$/" />
+                                                <small class="label label-info" ng-show="skjema.name.$invalid && skjema.name.$dirty">Skriv inn et lovlig navn</small>
                                             </div>
                                             <div class="form-group">
                                                 <label>E-post</label>
-                                                <input class="form-control" name="epost" ng-model="epost" ng-required="true" ng-pattern="/^[a-zøæåA-ZØÆÅ0-9.@\-]{2,30}$/" />
-                                                <p class="label label-info" ng-show="skjema.epost.$invalid && skjema.epost.$dirty">Skriv inn en lovlig e-post</p>
+                                                <input class="form-control" type="email" name="epost" ng-model="epost" ng-required="true" ng-pattern="/^[a-zøæåA-ZØÆÅ0-9.@\-_]{4,30}$/" />
+                                                <small class="label label-info" ng-show="skjema.epost.$invalid && skjema.epost.$dirty">Skriv inn en lovlig e-post</small>
                                             </div>
                                             <div class="form-group">
                                                 <div class="form-inline">
@@ -234,10 +244,10 @@
 
                                             <label>Title</label>
                                             <input class="form-control" name="title" ng-model="title" ng-required="true" ng-pattern="/^[a-zæøåA-ZÆØÅ. \-]{2,30}$/" />
-                                            <p class="label label-info" ng-show="skjema.title.$invalid && skjema.title.$dirty">Bruk kun bokstaver</p>
-                                            <label>Spørsmål</label>
-                                            <textarea class="form-control" rows="7" name="question" ng-model="question" ng-required="true" style="resize: none" />
-                                            <p class="label label-info" ng-show="skjema.sporsmal.$invalid && skjema.spormal.$dirty">Skriv inn ditt spørsmål</p>
+                                            <small class="label label-info" ng-show="skjema.title.$invalid && skjema.title.$dirty">Skriv inn en passende tittel</small>
+                                            <label>Spørsmål <small>(20-200 tegn)</small></label>
+                                            <textarea class="form-control" rows="7" name="question" ng-model="question" ng-required="true" ng-minlength="20" ng-maxlength="200" style="resize: none" />
+                                            <small class="label label-info" ng-show="skjema.sporsmal.$invalid && skjema.spormal.$dirty">Skriv inn ditt spørsmål(20-200 tegn)</small>
                                         </div>
 
                                     </form>

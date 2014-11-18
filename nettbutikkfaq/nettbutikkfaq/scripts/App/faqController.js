@@ -8,6 +8,7 @@ App.controller("faqController", function ($scope, $http) {
     var url4 = '../../api/Faq/GetCategoryFaqs/';
     var url5 = '../../api/Faq/PostFaq/';
     var url6 = '../../api/Faq/GetFaq/';
+    var url7 = '../../api/Faq/PutLikeFaq/';
     
     hideAll();
     $scope.laster = true;
@@ -142,6 +143,20 @@ App.controller("faqController", function ($scope, $http) {
           error(function (data, status) {
               console.log(status + data);
           });
+    };
+
+    $scope.greaterThan = function (prop, val) {
+        return function (item) {
+            if (item[prop] > val) return true;
+        }
+    }
+    $scope.like = function(id, innFaq) {
+        $http.put(url7 + id, innFaq).success(function (faq) {
+            hideAll();
+            hentAlleFaqs();
+            }).error(function (data, status) {
+                console.log(status + data);
+            });
     };
 
     function hentFaq(id) {

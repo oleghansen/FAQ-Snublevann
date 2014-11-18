@@ -48,6 +48,8 @@ using System.Linq;
         public string Answer { get; set; }
         public int CategoriesId { get; set; }
         public virtual Categories Category {get; set; }
+
+        public int Frequency { get; set; }
     }
 
     public class Categories

@@ -19,6 +19,7 @@ namespace nettbutikkfaq.Models
                     Title = "Har dere butikker?",
                     Question = "Har dere butikker i Norge eller eksisterer dere kun som nettbutikk?",
                     Answer = "Vi eksisterer for øyeblikket kun som nettbutikk og har foreløping ingen planer om å endre på det.",
+                    Frequency = 5,
                     CategoriesId=1},
                 new Faqs{
                     Name = "FAQ",
@@ -26,6 +27,7 @@ namespace nettbutikkfaq.Models
                     Title = "Kan jeg være sikker på at det er lovlig å handle fra dere?",
                     Question = "Kan jeg være sikker på at det er lovlig å handle fra dere, og er det i det hele tatt lov å selge alkohol på internett?",
                     Answer = "Du kan ikke være sikker på at det er lovlig å handle fra oss. Du kan faktisk være helt sikker på at det ikke er lov.",
+                    Frequency = 2,
                     CategoriesId=1 },
 
                 new Faqs{
@@ -34,6 +36,7 @@ namespace nettbutikkfaq.Models
                     Title = "Hvordan fraktes varene?",
                     Question = "Hvordan fraktes varene fra lager og hjem til meg? Kan jeg være sikker på at noe ikke knuser på veien?",
                     Answer = "Dine varer fraktes fra lageret våres i Oslo og hele veien hjem til din dør av fotgjenger Gudleik Knotten, som forøvrig er er aktivt fargeblind og overkjørt en rekke ganger.",
+                    Frequency = 3,
                     CategoriesId=2 },
                 new Faqs{
                     Name = "FAQ",
@@ -41,6 +44,7 @@ namespace nettbutikkfaq.Models
                     Title = "Hva er leveringstiden?",
                     Question = "Hva er leveringstiden deres?",
                     Answer = "Dette avhenger såklart av hvor i landet du bor. Gudleik Knotten (se spørsmål 'Hvordan fraktes varene?') er ikke lenger noen ungkalv og vår levering ligger på ca. 25-30 arbeidsdager, noe avhengig av vær og temperatur.",
+                    Frequency = 1,
                     CategoriesId=2 },
                 new Faqs{
                     Name = "FAQ",
@@ -48,6 +52,7 @@ namespace nettbutikkfaq.Models
                     Title = "Hvor lang er reklamasjonsfristen?",
                     Question = "Hvor lang reklamasjonsfrist har dere?",
                     Answer = "Vår reklamasjonsfrist er på to måneder etter brukeren har fått varene levert.",
+                    Frequency = 1,
                     CategoriesId=3 },
 
                  new Faqs{
@@ -56,6 +61,7 @@ namespace nettbutikkfaq.Models
                     Title = "Hva kreves for at jeg kan reklamere?",
                     Question = "Har dere noen spesielle retningslinjer ang. kjøpte varer i forhold til reklamasjon",
                     Answer = "Tomme flasker kan ikke reklameres på",
+                    Frequency = 1,
                     CategoriesId=3 },
 
                  new Faqs{
@@ -64,6 +70,7 @@ namespace nettbutikkfaq.Models
                     Title = "Hvordan kan jeg betale hos dere?",
                     Question = "Hvilke betalingsalternativer har dere?",
                     Answer = "Du kan betale med Visa/MasterCard, faktura, eller ved levering (husk tips til Gudleik)",
+                    Frequency = 1,
                     CategoriesId=4 },
 
                  new Faqs{
@@ -72,6 +79,7 @@ namespace nettbutikkfaq.Models
                     Title = "Har dere et delbetalingsalternativ?",
                     Question = "Går det an å delbatle hos dere?",
                     Answer = "På dette tidspunkt opererer vi ikke med noen form for detbetalingsalternativ",
+                    Frequency = 1,
                     CategoriesId=4 },
 
                   new Faqs{
@@ -80,6 +88,7 @@ namespace nettbutikkfaq.Models
                     Title = "Har dere en øvre grense på hvor mye en kan kjøpe for?",
                     Question = "Har dere en øvre grense for hvor mange artikler, eller for hvor mange kroner, man kan kjøpe for?",
                     Answer = "Vi har ingen grenser for hvor mye man kan kjøpe. Desto mer du kjøper - desto gladere blir alle parter.",
+                    Frequency = 1,
                     CategoriesId=5 },
                 
                     new Faqs{
@@ -88,6 +97,7 @@ namespace nettbutikkfaq.Models
                     Title = "Hva er Snublevann.no sin visjon?",
                     Question = "Har dere en visjon eller noe dere brenner for?",
                     Answer = "Vår visjon er at alt folk trenger skal være tilgjengelig fra internett uavhengig av norsk lov. Vi har startet med alkohol, men vurderer også på sikt å lage nettbutikk for tobakk, genmodifisert mat, sex og pytonslanger.",
+                    Frequency = 1,
                     CategoriesId=6 },
 
                     // Ubesvarte spørsmål

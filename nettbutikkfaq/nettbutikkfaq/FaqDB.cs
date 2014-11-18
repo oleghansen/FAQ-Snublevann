@@ -25,7 +25,8 @@ namespace nettbutikkfaq
                     title = f.Title,
                     question = f.Question,
                     answer = f.Answer,
-                    category = f.Category.Name
+                    category = f.Category.Name,
+                    frequency = f.Frequency
                 };
                 alleFaqs.Add(faq);
             }
@@ -69,7 +70,8 @@ namespace nettbutikkfaq
                     title = f.Title,
                     question = f.Question,
                     answer = f.Answer,
-                    category = f.Category.Name
+                    category = f.Category.Name,
+                    frequency = f.Frequency
                 };
                 katFaqs.Add(faq);
             }
@@ -89,11 +91,32 @@ namespace nettbutikkfaq
                     title = f.Title,
                     question = f.Question,
                     answer = f.Answer,
-                    category = f.Category.Name
+                    category = f.Category.Name,
+                    frequency = f.Frequency
                 };
             }
             return enFaq;
             
+        }
+
+        public bool likeFaq(int id, Faq innFaq)
+        {
+            var faq2 = db.Faqs.Where(p => p.Id == id).ToList();
+            foreach (var f in faq2)
+            {
+               f.Frequency++;
+            }
+
+           try
+            {
+                db.SaveChanges();
+            }
+            catch(Exception feil)
+            {
+                return false;
+            }
+           return true;
+
         }
 
         public bool leggTilFaq(Faq innFaq)
@@ -105,7 +128,8 @@ namespace nettbutikkfaq
                 Title = innFaq.title,
                 Epost = innFaq.epost,
                 Question = innFaq.question,
-                CategoriesId = innFaq.categoryid
+                CategoriesId = innFaq.categoryid,
+                Frequency = innFaq.frequency
             };
             try
             {

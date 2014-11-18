@@ -264,6 +264,27 @@ box-shadow:         0px 5px 8px 0px rgba(50, 50, 50, 0.27);
 	transition: .5s;
 }
 
+#defaultButtonGreen
+{
+    outline: none;
+    border: none;
+     -o-transition: .5s;
+	-ms-transition: .5s;
+	-moz-transition: .5s;
+	-webkit-transition: .5s;
+	transition: .5s;
+}
+
+#defaultButtonGreen:hover
+{
+   background-color:#97eb89;
+   	-o-transition: .5s;
+	-ms-transition: .5s;
+	-moz-transition: .5s;
+	-webkit-transition: .5s;
+	transition: .5s;
+}
+
 
 #defaultButton:active, #defaultButton:focus
 {

@@ -8,7 +8,7 @@ namespace nettbutikkfaq.Models
 {
     public class Faq
     {
-        [Display(Name = "Spørsmåls ID")]
+        [Display(Name = "Spørsmål ID")]
         public int id { get; set; }
 
         [Display(Name = "Navn")]
@@ -27,6 +27,8 @@ namespace nettbutikkfaq.Models
         public String answer { get; set; }
         public string category { get; set; }
         public int categoryid { get; set; }
+
+        public int frequency { get; set; }
 
     }
 }
